@@ -44,7 +44,7 @@ jobs:
         with:
           name: jammy
           path: |
-            ./dependency/libkvscproducer/kvscproducer-src/libcproducer.so
-            ./libKinesisVideoProducer.so
-            ./libgstkvssink.so
+            ./build/dependency/libkvscproducer/kvscproducer-src/libcproducer.so
+            ./build/libKinesisVideoProducer.so
+            ./build/libgstkvssink.so
 
