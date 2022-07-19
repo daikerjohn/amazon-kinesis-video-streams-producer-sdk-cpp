@@ -9,7 +9,7 @@ fi
 
 mkdir bld
 cd bld
-cmake -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_JNI=OFF -DBUILD_DEPENDENCIES=OFF ..
+cmake -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_JNI=OFF -DBUILD_DEPENDENCIES=ON ..
 cd bld
 make -j3
 if [[ "$?" == "0" ]]; then
