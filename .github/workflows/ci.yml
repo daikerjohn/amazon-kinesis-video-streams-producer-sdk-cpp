@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+      # The 22.04 virtual environment includes libunwind-14-dev, which conflicts with libunwind-dev
+      - name: Fix 22.04 virt env
+      - run: |-
+          sudo apt-get remove libunwind-14 -y
+          sudo apt-get install libunwind-dev -y
       - name: Install dependencies
         run: |
           sudo apt-get update
