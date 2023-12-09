@@ -12,7 +12,6 @@ on:
       - master
 
 jobs:
-<<<<<<< HEAD
   ubuntu-22:
     runs-on: ubuntu-22.04
     permissions:
@@ -280,7 +279,6 @@ jobs:
           make
           make install
           file libKinesisVideoProducer.so
->>>>>>> origin/master
 
   linux-build-gcc-static:
     runs-on: ubuntu-20.04
