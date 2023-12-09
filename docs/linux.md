@@ -54,7 +54,7 @@ $ gst-launch-1.0 -v rtspsrc location=rtsp://YourCameraRtspUrl short-header=TRUE 
 ```
 $ gst-launch-1.0 -v rtspsrc location="rtsp://YourCameraRtspUrl" short-header=TRUE ! rtph264depay ! h264parse ! kvssink stream-name="iot-stream" iot-certificate="iot-certificate,endpoint=endpoint,cert-path=/path/to/certificate,key-path=/path/to/private/key,ca-path=/path/to/ca-cert,role-aliases=role-aliases"
 ```
-You can find the RTSP URL from your IP camera manual or manufacturers product page.
+You can find the RTSP URL from your IP camera manual or manufacturers product page. For more information on how to set up IoT/role policies and role-aliases, please refer to [iot-based-credential-provider](auth.md#iot-based-credential-provider) and https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-iot.html.
 
 ###### Running the `gst-launch-1.0` command to start streaming from USB camera source in **Ubuntu**.
 ```
@@ -134,6 +134,14 @@ Change your current working directory to `build`. Launch the sample application 
 AWS_ACCESS_KEY_ID=YourAccessKeyId AWS_SECRET_ACCESS_KEY=YourSecretAccessKey ./kvs_gstreamer_sample <my-stream> </path/to/file>
 ```
 
+##### Running the GStreamer sample application to upload h264 *video* with kvssink
+
+`kvs_gstreamer_sample` is functionally identical to `kvs_gstreamer_sample` except it uses kvssink instead of appsink.
+
+```
+AWS_ACCESS_KEY_ID=YourAccessKeyId AWS_SECRET_ACCESS_KEY=YourSecretAccessKey ./kvssink_gstreamer_sample <my-stream> <my_rtsp_url OR /path/to/file>
+```
+
 ##### Running the GStreamer sample application to upload a *audio and video* file
 
 `kvs_gstreamer_audio_video_sample` supports uploading a video that is either MKV, MPEGTS, or MP4. The sample application expects the video is encoded in H264 and audio is encoded in AAC format. Note: If your media uses a different format, then you can revise the pipeline elements in the sample application to suit your media format.
@@ -141,7 +149,7 @@ AWS_ACCESS_KEY_ID=YourAccessKeyId AWS_SECRET_ACCESS_KEY=YourSecretAccessKey ./kv
 Change your current working directory to `build`. Launch the sample application with a stream name and a path to the file and it will start streaming.
 
 ```
-AWS_ACCESS_KEY_ID=YourAccessKeyId AWS_SECRET_ACCESS_KEY=YourSecretAccessKey ./kvs_gstreamer_audio_video_sample <my-stream> </path/to/file>
+AWS_ACCESS_KEY_ID=YourAccessKeyId AWS_SECRET_ACCESS_KEY=YourSecretAccessKey ./kvs_gstreamer_audio_video_sample <my-stream> -f </path/to/file>
 ```
 
 ##### Running the GStreamer sample application to stream audio and video from live source
