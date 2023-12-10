@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARCH=$(uname -i)
+ARCH=$(uname -m)
 source /etc/os-release
 
 if [[ ! -e "../travellingCamera/daemon/lib/$ARCH/$VERSION_CODENAME" ]]; then
